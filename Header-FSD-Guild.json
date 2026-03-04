@@ -1,0 +1,414 @@
+{
+  "componentName": "Header",
+  "componentDescription": "A responsive header component that renders a desktop navigation with logo, horizontal menu items, dropdown menus, search field, location selector, and sign-in button, as well as a mobile navigation with logo, location selector, search icon, and hamburger menu. The component supports a full navigation menu overlay on mobile devices with expandable submenus and user profile display. Desktop and mobile layouts are responsive variants, not selectable via dropdown.",
+  "synonyms": ["Navigation", "Top Bar", "Site Header", "Global Navigation", "Main Navigation"],
+  "confidence": 0.95,
+  "rationale": "The Figma JSON clearly contains two primary frames: 'Header-Desktop' and 'Header-Mobile', both nested under a 'Property 1=Variant' component. The desktop header includes a logo ('Logo_Full 1'), horizontal menu items ('Menu-item'), dropdown menus ('Dropdown menu'), a search field ('Field'), a location selector ('Dropdown menu' with 'National'), and a sign-in button ('Button' with 'myGuild Sign In'). The mobile header includes a logo, location selector, search icon, and hamburger menu icon ('Navigation menu_Mobile'). A separate 'Navigation menu' frame appears to overlay the mobile view with a user profile card ('User-card' with profile image, name 'Steven', and role 'ACT Member') and a vertical list of menu links ('Programs', 'News & Events', 'Training', 'Resources') with arrow icons and submenu items ('Automation', 'Review products'). The presence of both desktop and mobile layouts, navigation links, and interactive elements (dropdowns, search, buttons) strongly indicates a Header component.",
+  "resourceTypeSuggestion": "apps/dns/components/content/header",
+  "fields": [
+    {
+      "name": "logo",
+      "type": "object",
+      "required": false,
+      "default": null,
+      "notes": "Logo image and link. Inferred from 'Logo_Full 1' frame containing vector graphics in both desktop and mobile headers. Includes fileReference for logo image and altText for accessibility."
+    },
+    {
+      "name": "logoFileReference",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "notes": "File reference for logo image. Inferred from 'Logo_Full 1' frame containing vector graphics."
+    },
+    {
+      "name": "logoAltText",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "notes": "Alt text for logo image. Inferred from presence of logo image node."
+    },
+    {
+      "name": "logoLink",
+      "type": "string",
+      "required": false,
+      "default": "/",
+      "notes": "Link target for logo. Common pattern for header logos to link to homepage."
+    },
+    {
+      "name": "menuItems",
+      "type": "array",
+      "required": false,
+      "default": [],
+      "notes": "Array of top-level menu items for desktop navigation. Inferred from 'Menu-item' frames containing TEXT nodes with characters 'Programs', 'News & Events', 'Training'. Each item may have label, link, and optional submenu."
+    },
+    {
+      "name": "dropdownMenuItems",
+      "type": "array",
+      "required": false,
+      "default": [],
+      "notes": "Array of dropdown menu items for desktop navigation. Inferred from 'Dropdown menu' frame containing TEXT 'Resources' and chevron-down icon. Each item may have label, link, and submenu items."
+    },
+    {
+      "name": "searchPlaceholder",
+      "type": "string",
+      "required": false,
+      "default": "Search",
+      "notes": "Placeholder text for search field. Inferred from 'Field' frame containing TEXT node with characters 'Search' and search icon."
+    },
+    {
+      "name": "searchEnabled",
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "notes": "Flag to enable/disable search field in header. Inferred from presence of 'Field' frame with search icon in both desktop and mobile layouts."
+    },
+    {
+      "name": "locationSelectorLabel",
+      "type": "string",
+      "required": false,
+      "default": "National",
+      "notes": "Label for location selector dropdown. Inferred from 'Dropdown menu' frame containing TEXT 'National' and icon in 'Buttons Group'."
+    },
+    {
+      "name": "locationSelectorOptions",
+      "type": "array",
+      "required": false,
+      "default": [],
+      "notes": "Array of location options for dropdown. Inferred from presence of location selector dropdown with 'National' label and chevron-down icon."
+    },
+    {
+      "name": "signInButtonText",
+      "type": "string",
+      "required": false,
+      "default": "myGuild Sign In",
+      "notes": "Text for sign-in button. Inferred from 'Button' frame containing TEXT 'myGuild Sign In' in desktop header."
+    },
+    {
+      "name": "signInButtonLink",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "notes": "Link target for sign-in button. Inferred from presence of 'Button' frame with sign-in text."
+    },
+    {
+      "name": "buttonType",
+      "type": "enum",
+      "required": false,
+      "default": "primary",
+      "notes": "Configurable button type per brand guidelines. Options include primary, secondary, tertiary. Inferred from 'Button' frame with yellow background color."
+    },
+    {
+      "name": "mobileMenuEnabled",
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "notes": "Flag to enable/disable mobile menu overlay. Inferred from 'Navigation menu_Mobile' icon and 'Navigation menu' overlay frame in mobile layout."
+    },
+    {
+      "name": "userProfileEnabled",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "notes": "Flag to enable/disable user profile display in mobile menu overlay. Inferred from 'User-card' frame containing profile image, name 'Steven', and role 'ACT Member' in mobile navigation menu."
+    },
+    {
+      "name": "userProfileImage",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "notes": "File reference for user profile image. Inferred from 'Container' frame with IMAGE fill in 'User-card'."
+    },
+    {
+      "name": "userProfileImageAltText",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "notes": "Alt text for user profile image. Inferred from presence of profile image in 'User-card'."
+    },
+    {
+      "name": "userProfileName",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "notes": "User name for profile display. Inferred from TEXT 'Steven' in 'User-card' 'Details' frame."
+    },
+    {
+      "name": "userProfileRole",
+      "type": "string",
+      "required": false,
+      "default": "",
+      "notes": "User role or category for profile display. Inferred from TEXT 'ACT Member' in 'User-card' 'Details' frame."
+    },
+    {
+      "name": "mobileMenuLinks",
+      "type": "array",
+      "required": false,
+      "default": [],
+      "notes": "Array of menu links for mobile navigation overlay. Inferred from 'Navigation menu' frame containing multiple 'Footer Components/Link' frames with TEXT nodes 'Programs', 'News & Events', 'Training', 'Resources', and arrow icons. Each link may have label, link target, and optional submenu items."
+    },
+    {
+      "name": "submenuItems",
+      "type": "array",
+      "required": false,
+      "default": [],
+      "notes": "Array of submenu items for expandable menu links. Inferred from 'Resources' link in mobile navigation menu with submenu items 'Automation' and 'Review products' displayed with indentation and border separator."
+    },
+    {
+      "name": "backgroundColor",
+      "type": "enum",
+      "required": false,
+      "default": "#FFFFFF",
+      "notes": "Configurable background color for header. Inferred from 'Header-Desktop' and 'Header-Mobile' frames with white background fill. Options aligned to brand guidelines: white, light gray, dark."
+    },
+    {
+      "name": "stickyHeader",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "notes": "Flag to enable/disable sticky header behavior on scroll. Inferred from 'Header-Mobile' frame with scrollBehavior 'STICKY_SCROLLS'."
+    }
+  ],
+  "businessRequirements": [
+    "1. The component must render a responsive header with distinct layouts for desktop and mobile viewports, adapting automatically based on viewport width.",
+    "2. The component must display a logo image with configurable file reference and alt text, linked to a configurable target URL (default homepage).",
+    "3. The component must support authoring of multiple top-level menu items for desktop navigation, each with configurable label, link target, and optional submenu items.",
+    "4. The component must support authoring of dropdown menu items for desktop navigation, each with configurable label, link target, chevron-down icon, and expandable submenu items.",
+    "5. The component must render a search field with configurable placeholder text and search icon, allowing users to enter search queries.",
+    "6. The component must render a location selector dropdown with configurable label, icon, chevron-down icon, and array of selectable location options.",
+    "7. The component must render a sign-in button with configurable text, link target, and button type (primary, secondary, tertiary) per brand guidelines.",
+    "8. The component must render a mobile navigation with logo, location selector, search icon, and hamburger menu icon.",
+    "9. The component must display a mobile menu overlay when the hamburger menu icon is clicked, containing user profile display (if enabled) and vertical list of menu links with arrow icons.",
+    "10. The component must support authoring of user profile display in mobile menu overlay, including profile image with alt text, user name, and user role or category.",
+    "11. The component must support authoring of mobile menu links, each with configurable label, link target, arrow icon, and optional submenu items.",
+    "12. The component must display submenu items for expandable menu links in mobile menu overlay, with indentation and border separator to distinguish hierarchy.",
+    "13. The component must allow configuration of header background color with options aligned to brand guidelines (white, light gray, dark).",
+    "14. The component must support optional sticky header behavior on scroll, configurable via boolean flag.",
+    "15. The component must render dropdown menus and mobile menu overlay with shadow effects for visual hierarchy.",
+    "16. The component must ensure all interactive elements (menu items, dropdowns, buttons, search field, location selector, hamburger menu) are keyboard-accessible and meet WCAG 2.1 AA standards.",
+    "17. The component must allow authors to enable or disable search field, mobile menu, and user profile display via boolean flags.",
+    "18. The component must validate that all link targets are non-empty strings when menu items, dropdown items, or mobile menu links are authored.",
+    "19. The component must ensure menu item labels, dropdown labels, and mobile menu link labels are non-empty strings when authored.",
+    "20. The component must support expandable dropdown menus on desktop and expandable submenu items in mobile menu overlay, with visual indicator (chevron icon or arrow icon) for expandable items."
+  ],
+  "acceptanceCriteria": [
+    "1. Given the component is rendered on a desktop viewport, when the page loads, then the header displays logo, horizontal menu items, dropdown menus, search field, location selector, and sign-in button in a single row.",
+    "2. Given the component is rendered on a mobile viewport, when the page loads, then the header displays logo, location selector, search icon, and hamburger menu icon in a compact layout.",
+    "3. Given the logo is authored with file reference and alt text, when the header is rendered, then the logo image is displayed with correct alt text and linked to the configured target URL.",
+    "4. Given multiple top-level menu items are authored, when the desktop header is rendered, then each menu item displays label and is linked to the configured target URL.",
+    "5. Given a dropdown menu item is authored with submenu items, when the user hovers over or clicks the dropdown menu item on desktop, then the submenu displays below the menu item with shadow effect.",
+    "6. Given the search field is enabled, when the desktop header is rendered, then the search field displays with placeholder text, search icon, and allows user input.",
+    "7. Given the location selector is authored with label and options, when the user clicks the location selector on desktop or mobile, then the dropdown displays available location options.",
+    "8. Given the sign-in button is authored with text and link, when the desktop header is rendered, then the button displays with configured text, button type styling, and links to the configured target URL.",
+    "9. Given the mobile menu is enabled, when the user clicks the hamburger menu icon on mobile, then the mobile menu overlay displays with user profile (if enabled) and vertical list of menu links.",
+    "10. Given the user profile is enabled and authored with image, name, and role, when the mobile menu overlay is displayed, then the user profile displays at the top of the overlay with profile image, name, and role.",
+    "11. Given mobile menu links are authored, when the mobile menu overlay is displayed, then each link displays label and arrow icon, and is linked to the configured target URL.",
+    "12. Given a mobile menu link has submenu items authored, when the user clicks the link in the mobile menu overlay, then the submenu items display with indentation and border separator.",
+    "13. Given the header background color is configured, when the header is rendered, then the background color matches the configured value aligned to brand guidelines.",
+    "14. Given sticky header is enabled, when the user scrolls down the page, then the header remains fixed at the top of the viewport.",
+    "15. Given no menu items are authored, when the header is rendered, then the menu section is not displayed on desktop.",
+    "16. Given the search field is disabled, when the header is rendered, then the search field is not displayed on desktop.",
+    "17. Given the user profile is disabled, when the mobile menu overlay is displayed, then the user profile section is not displayed.",
+    "18. Given a menu item link target is empty, when the author attempts to save the component, then a validation error message is displayed.",
+    "19. Given a menu item label is empty, when the author attempts to save the component, then a validation error message is displayed.",
+    "20. Given a dropdown menu item is expanded on desktop, when the user clicks outside the dropdown, then the dropdown collapses.",
+    "21. Given the mobile menu overlay is open, when the user clicks outside the overlay or presses the escape key, then the overlay closes.",
+    "22. Given keyboard navigation is used on desktop, when the user tabs through interactive elements, then focus moves sequentially through logo link, menu items, dropdown menus, search field, location selector, and sign-in button.",
+    "23. Given keyboard navigation is used in mobile menu overlay, when the user tabs through interactive elements, then focus moves sequentially through user profile, menu links, and submenu items."
+  ],
+  "analyticsRequirements": [
+    {
+      "event": "headerLogoClick",
+      "trigger": "User clicks on the header logo",
+      "attributes": {
+        "componentName": "Header",
+        "logoLink": "{{logoLink}}",
+        "viewport": "desktop|mobile"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerLogoClick' and attributes"
+    },
+    {
+      "event": "headerMenuItemClick",
+      "trigger": "User clicks on a top-level menu item in desktop navigation",
+      "attributes": {
+        "componentName": "Header",
+        "menuItemLabel": "{{menuItemLabel}}",
+        "menuItemLink": "{{menuItemLink}}",
+        "viewport": "desktop"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerMenuItemClick' and attributes"
+    },
+    {
+      "event": "headerDropdownOpen",
+      "trigger": "User opens a dropdown menu in desktop navigation",
+      "attributes": {
+        "componentName": "Header",
+        "dropdownLabel": "{{dropdownLabel}}",
+        "viewport": "desktop"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerDropdownOpen' and attributes"
+    },
+    {
+      "event": "headerDropdownItemClick",
+      "trigger": "User clicks on a submenu item within a dropdown menu in desktop navigation",
+      "attributes": {
+        "componentName": "Header",
+        "dropdownLabel": "{{dropdownLabel}}",
+        "submenuItemLabel": "{{submenuItemLabel}}",
+        "submenuItemLink": "{{submenuItemLink}}",
+        "viewport": "desktop"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerDropdownItemClick' and attributes"
+    },
+    {
+      "event": "headerSearchSubmit",
+      "trigger": "User submits a search query in the search field",
+      "attributes": {
+        "componentName": "Header",
+        "searchQuery": "{{searchQuery}}",
+        "viewport": "desktop|mobile"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerSearchSubmit' and attributes"
+    },
+    {
+      "event": "headerLocationSelect",
+      "trigger": "User selects a location from the location selector dropdown",
+      "attributes": {
+        "componentName": "Header",
+        "selectedLocation": "{{selectedLocation}}",
+        "viewport": "desktop|mobile"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerLocationSelect' and attributes"
+    },
+    {
+      "event": "headerSignInClick",
+      "trigger": "User clicks on the sign-in button in desktop navigation",
+      "attributes": {
+        "componentName": "Header",
+        "signInButtonText": "{{signInButtonText}}",
+        "signInButtonLink": "{{signInButtonLink}}",
+        "viewport": "desktop"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerSignInClick' and attributes"
+    },
+    {
+      "event": "headerMobileMenuOpen",
+      "trigger": "User opens the mobile menu overlay by clicking the hamburger menu icon",
+      "attributes": {
+        "componentName": "Header",
+        "viewport": "mobile"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerMobileMenuOpen' and attributes"
+    },
+    {
+      "event": "headerMobileMenuLinkClick",
+      "trigger": "User clicks on a menu link in the mobile menu overlay",
+      "attributes": {
+        "componentName": "Header",
+        "menuLinkLabel": "{{menuLinkLabel}}",
+        "menuLinkTarget": "{{menuLinkTarget}}",
+        "viewport": "mobile"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerMobileMenuLinkClick' and attributes"
+    },
+    {
+      "event": "headerMobileSubmenuExpand",
+      "trigger": "User expands a submenu in the mobile menu overlay",
+      "attributes": {
+        "componentName": "Header",
+        "menuLinkLabel": "{{menuLinkLabel}}",
+        "viewport": "mobile"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerMobileSubmenuExpand' and attributes"
+    },
+    {
+      "event": "headerMobileSubmenuItemClick",
+      "trigger": "User clicks on a submenu item in the mobile menu overlay",
+      "attributes": {
+        "componentName": "Header",
+        "menuLinkLabel": "{{menuLinkLabel}}",
+        "submenuItemLabel": "{{submenuItemLabel}}",
+        "submenuItemLink": "{{submenuItemLink}}",
+        "viewport": "mobile"
+      },
+      "dataLayer": "Push event to dataLayer.push with event name 'headerMobileSubmenuItemClick' and attributes"
+    }
+  ],
+  "accessibility": [
+    "1. All interactive elements (logo link, menu items, dropdown menus, search field, location selector, sign-in button, hamburger menu icon) must be keyboard-accessible with visible focus indicators.",
+    "2. The logo image must include descriptive alt text for screen readers.",
+    "3. The user profile image (if enabled) must include descriptive alt text for screen readers.",
+    "4. Menu items and dropdown menus must be navigable using keyboard arrow keys and Enter/Space to activate.",
+    "5. The search field must include a visible label or aria-label for screen readers.",
+    "6. The location selector dropdown must include a visible label or aria-label for screen readers.",
+    "7. The sign-in button must be clearly labeled and distinguishable from other buttons.",
+    "8. The hamburger menu icon on mobile must include a descriptive aria-label (e.g., 'Open menu') for screen readers.",
+    "9. The mobile menu overlay must trap keyboard focus within the overlay when open, and return focus to the hamburger menu icon when closed.",
+    "10. Dropdown menus and mobile submenu items must use ARIA attributes (aria-expanded, aria-haspopup) to indicate expandable state to assistive technologies.",
+    "11. Color contrast for all text, icons, and interactive elements must meet WCAG 2.1 AA standards (minimum 4.5:1 for normal text, 3:1 for large text and icons).",
+    "12. The component must support screen reader announcements for state changes (e.g., 'Menu expanded', 'Menu collapsed', 'Search results updated').",
+    "13. The header landmark must be wrapped in a <header> or role='banner' element for screen reader navigation.",
+    "14. The navigation menu must be wrapped in a <nav> or role='navigation' element for screen reader navigation.",
+    "15. Submenu items in mobile menu overlay must be indented or nested semantically to convey hierarchy to screen readers."
+  ],
+  "edgeCases": [
+    "1. If no menu items are authored, the desktop navigation menu section should not be rendered.",
+    "2. If the logo file reference is missing or invalid, a placeholder or fallback logo should be displayed, or the component should gracefully omit the logo image.",
+    "3. If the search field is disabled, the search field and icon should not be rendered on desktop or mobile.",
+    "4. If the mobile menu is disabled, the hamburger menu icon should not be rendered on mobile, and the mobile menu overlay should not be accessible.",
+    "5. If the user profile is disabled, the user profile section should not be rendered in the mobile menu overlay.",
+    "6. If a menu item label is empty or missing, the menu item should not be rendered, or a validation error should be displayed to the author.",
+    "7. If a menu item link target is empty or missing, the menu item should render as non-clickable text, or a validation error should be displayed to the author.",
+    "8. If a dropdown menu has no submenu items authored, the dropdown should render as a standard menu item without chevron icon or expandable behavior.",
+    "9. If the location selector has no options authored, the location selector should render as non-interactive text or be omitted.",
+    "10. If the sign-in button text is empty or missing, the button should not be rendered, or a default text (e.g., 'Sign In') should be used.",
+    "11. If the sign-in button link is empty or missing, the button should render as non-clickable or a validation error should be displayed to the author.",
+    "12. If a mobile menu link has submenu items authored but the submenu is not expanded, the submenu items should remain hidden until the user clicks the link.",
+    "13. If a mobile menu link has no submenu items authored, the arrow icon should not be displayed, and the link should navigate directly to the target URL.",
+    "14. If the user profile image is missing or invalid, a placeholder avatar or fallback image should be displayed in the mobile menu overlay.",
+    "15. If the user profile name or role is empty or missing, the corresponding text field should not be rendered or display a default value (e.g., 'Guest').",
+    "16. If the header background color is not configured or invalid, a default background color (white) should be applied.",
+    "17. If sticky header is enabled and the viewport is scrolled to the top, the header should remain in its default position without sticky behavior applied.",
+    "18. If the viewport width is resized from desktop to mobile or vice versa, the header layout should adapt responsively without requiring a page reload.",
+    "19. If a dropdown menu or mobile menu overlay is open and the user navigates to a new page, the dropdown or overlay should close automatically.",
+    "20. If multiple dropdown menus are opened simultaneously on desktop, only one dropdown should remain open at a time, and opening a new dropdown should close the previous one."
+  ],
+  "assumptions": [
+    "1. The component name 'Header' is selected as the strongest candidate based on the presence of both desktop and mobile header frames with navigation, logo, search, and utility elements.",
+    "2. The desktop and mobile layouts are assumed to be responsive variants of the same component, not separate selectable variants, based on common responsive design patterns.",
+    "3. The location selector dropdown labeled 'National' is assumed to represent a location or region selector, allowing users to choose between different geographic areas or contexts.",
+    "4. The 'User-card' frame in the mobile navigation menu is assumed to display the current logged-in user's profile, with profile image, name, and role or membership status.",
+    "5. The 'Resources' dropdown menu item on desktop and the 'Resources' link in mobile navigation menu are assumed to expand to reveal submenu items ('Automation', 'Review products').",
+    "6. The 'myGuild Sign In' button is assumed to be a call-to-action for user authentication or login, linking to a sign-in or registration page.",
+    "7. The search field is assumed to trigger a search action when the user submits a query (e.g., pressing Enter or clicking a search button).",
+    "8. The hamburger menu icon on mobile is assumed to toggle the mobile menu overlay, which contains user profile and menu links.",
+    "9. The mobile menu overlay is assumed to be a full-screen or large overlay that covers the main content when opened.",
+    "10. The sticky header behavior inferred from 'STICKY_SCROLLS' in the mobile header frame is assumed to be an optional feature that can be enabled or disabled via authoring.",
+    "11. The dropdown menus and mobile menu overlay are assumed to close when the user clicks outside the menu or presses the Escape key.",
+    "12. The component is assumed to support multiple top-level menu items and multiple dropdown menu items, with no fixed limit on the number of items.",
+    "13. The component is assumed to support nested submenu items within mobile menu links, with indentation and border separators to indicate hierarchy.",
+    "14. The background color for the header is assumed to be configurable, with options aligned to brand guidelines (white, light gray, dark).",
+    "15. The button type for the sign-in button is assumed to be configurable, with options aligned to brand guidelines (primary, secondary, tertiary).",
+    "16. The component is assumed to render on all page templates where a global header is required.",
+    "17. The component is assumed to integrate with an authentication system to display user profile information in the mobile menu overlay (if enabled).",
+    "18. The component is assumed to integrate with a search service or endpoint to process search queries submitted via the search field.",
+    "19. The component is assumed to be authored once in AEM and reused across all pages, with configurable options for menu items, dropdowns, and utility elements.",
+    "20. The component is assumed to follow accessibility best practices, including keyboard navigation, focus management, and ARIA attributes for expandable elements."
+  ],
+  "openQuestions": [
+    "1. Should the location selector dropdown options be dynamically populated from a data source (e.g., AEM content fragment, external API), or should they be statically authored by content authors?",
+    "2. Should the user profile display in the mobile menu overlay be dynamically populated from an authentication service, or should it be statically authored by content authors?",
+    "3. Should the search field submit to a dedicated search results page, or should it display inline search results within the header or as an overlay?",
+    "4. Should the mobile menu overlay support multiple levels of nested submenus, or is a single level of submenu items sufficient?",
+    "5. Should the dropdown menus on desktop support keyboard navigation with arrow keys to move between submenu items, or should they rely on Tab key navigation only?",
+    "6. Should the sign-in button behavior differ based on user authentication status (e.g., display 'Sign Out' or 'My Account' if the user is already logged in)?",
+    "7. Should the header support multiple logo variants (e.g., full logo, icon-only logo) based on viewport width or scroll position?",
+    "8. Should the header support a notification or badge indicator (e.g., unread messages, cart item count) on any utility elements?",
+    "9. Should the header support a language selector dropdown in addition to the location selector dropdown?",
+    "10. Should the header support animation or transition effects when opening/closing dropdown menus or the mobile menu overlay?",
+    "11. Should the header support a secondary navigation row or utility bar (e.g., breadcrumb, additional utility links) below the primary navigation?",
+    "12. Should the header support theming or color scheme variants (e.g., light theme, dark theme) based on page context or user preference?",
+    "13. Should the header support personalization or dynamic content based on user segment, location, or other targeting criteria?",
+    "14. Should the header support A/B testing or experimentation for menu items, CTA buttons, or layout variants?",
+    "15. Should the header support real-time updates or notifications (e.g., new menu items, promotional banners) without requiring a page reload?"
+  ]
+}
